@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1773270632 source:c:\users\marci gonçalves\documents\faculdade\segundo semestre\estrutura de dados 1\aulas\11-03-2026\prjstructs\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+

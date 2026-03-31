@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1774480751 source:c:\users\marci gonçalves\documents\faculdade\segundo semestre\estrutura de dados 1\aulas\25-03-2026\prjalocacaodinamica\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<string.h>
+

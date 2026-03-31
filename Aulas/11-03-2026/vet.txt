@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+typedef struct aluno Aluno; //cria-se um apelido para substituir duas palavras
+
+struct aluno {
+    char nome[30];
+    int RA;
+    float coeficiente;
+};
+
+Aluno criaAluno(int i){
+    Aluno a;
+    
+    return a;
+}
+
+int main()
+{
+    setlocale(LC_ALL, "Portuguese");
+
+    int i, n = 3;
+    Aluno vetAlunos[n];
+
+    for(i = 0; i < n; i++){
+        setbuf(stdin, NULL);
+        printf("Informe o nome do aluno %d: ", i+1);
+        scanf("%[^\n]s", vetAlunos[i].nome);
+        printf("Informe o RA: ");
+        scanf("%d", &vetAlunos[i].RA);
+        printf("Informe o coeficiente: ");
+        scanf("%f", &vetAlunos[i].coeficiente);
+    }
+
+    printf("\n\n\*Dados informados:*\n");
+
+    for(i = 0; i < n; i++){
+        printf("Nome do Aluno %d: %s \n", i+1, vetAlunos[i].nome);
+        printf("RA: %d \n", vetAlunos[i].RA);
+        printf("Coeficiente: %.4f \n", vetAlunos[i].coeficiente);
+    }
+
+    return 0;
+}
