@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1775410507 source:c:\users\marci\documents\documentos\programação\estrutura-de-dados-utfpr\projetos\prjstreaming\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+
