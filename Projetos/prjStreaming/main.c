@@ -3,8 +3,6 @@
 #include <locale.h>
 #include "streaming.h"
 
-//precisa das validações de entradas
-
 int main(){
 
     setlocale(LC_ALL, "Portuguese");
@@ -30,29 +28,28 @@ int main(){
 
         //alocando streamings
         do{
-            if(numServ == 0){
-                clientes[numClientes].contratados = alocaStreaming();
-            } else{
-                clientes[numClientes].contratados  = realocaStreaming(clientes[numClientes].contratados, numServ);
-            }
-
+            adicionaStreaming(clientes, numClientes, numServ);
             //cadastrando Streamings
             cadastraStreaming(clientes, numClientes, numServ);
 
             //continuar o loop de cadastrar serviços
-            printf("Informar outro Serviço? ");
+            printf("Informar outro Serviço? (S/N) ");
             scanf(" %c", &alocarStreaming);
+
+            //se o cliente quiser cadastrar mais um streaming a quantidade de serviços aumenta
             if(alocarStreaming == 's' || alocarStreaming == 'S'){
                numServ++;
             }
         }while(alocarStreaming == 's' || alocarStreaming == 'S');
 
         //guardando a quantidade de serviços de cada cliente em uma variável dentro da sua struct
-        clientes[numClientes].numServ = numServ;
+        defineQtd(clientes, numClientes, numServ);
 
         //continuar o loop de cadastrar usuários
         printf("Deseja cadastrar outro contratante? (S/N) ");
         scanf(" %c", &alocarCliente);
+
+        //se o cliente quiser cadastrar mais um cliente a quantidade número de clientes aumenta
         if(alocarCliente == 's' || alocarCliente == 'S'){
             numClientes++;
         }

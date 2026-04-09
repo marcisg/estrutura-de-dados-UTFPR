@@ -2,6 +2,25 @@
 #include <stdlib.h>
 #include "streaming.h"
 
+struct data{
+    int dia;
+    int mes;
+    int ano;
+};
+
+struct streaming{
+    char servico[30];
+    double valor;
+    int recorrencia;
+};
+
+struct cliente{
+    char nome[30];
+    Data *dataNascimento;
+    Streaming *contratados;
+    int numServ;
+};
+
 Cliente *alocaCliente(){
     Cliente *c = (Cliente *) malloc(sizeof(Cliente));
     return c;
@@ -54,6 +73,14 @@ Streaming *realocaStreaming(Streaming *contratados, int numServ){
     return contratados;
 }
 
+void adicionaStreaming(Cliente *clientes, int numClientes, int numServ){
+    if(numServ == 0){
+        clientes[numClientes].contratados = alocaStreaming();
+    } else {
+        clientes[numClientes].contratados  = realocaStreaming(clientes[numClientes].contratados, numServ);
+    }
+}
+
 void cadastraStreaming(Cliente *cliente, int numClientes, int numServ){
     printf("Informe o nome do Serviço contratado: ");
     scanf(" %[^\n]", cliente[numClientes].contratados[numServ].servico);
@@ -61,6 +88,10 @@ void cadastraStreaming(Cliente *cliente, int numClientes, int numServ){
     scanf("%lf", &cliente[numClientes].contratados[numServ].valor);
     printf("Qual a recorrência do contrato em meses: ");
     scanf("%d", &cliente[numClientes].contratados[numServ].recorrencia);
+}
+
+void defineQtd(Cliente *clientes, int numClientes, int numServ){
+    clientes[numClientes].numServ = numServ;
 }
 
 void imprimeStreaming(Streaming *contratados, int numServ){
@@ -74,7 +105,7 @@ void imprimeStreaming(Streaming *contratados, int numServ){
 void imprimeCliente(Cliente *clientes, int numClientes){
     for(int i = 0;i <= numClientes;i++){
         printf("\nNome: %s\n", clientes[i].nome);
-        printf("Data de nascimento: %d/%d/%d\n\n", clientes[i].dataNascimento->dia, clientes[i].dataNascimento->mes, clientes[i].dataNascimento->ano);
+        printf("Data de nascimento: %02d/%02d/%d\n\n", clientes[i].dataNascimento->dia, clientes[i].dataNascimento->mes, clientes[i].dataNascimento->ano);
         printf("Serviços contratados: \n");
         imprimeStreaming(clientes[i].contratados, clientes[i].numServ);
         printf("\n");
